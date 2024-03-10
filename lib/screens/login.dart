@@ -3,20 +3,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app_basic/screens/home.dart';
 import 'package:todo_app_basic/screens/signup.dart';
 
+// USERS
+Map users = {
+  'Abhishek': 'Abhi@123',
+  'Shashi': 'Shashi@123',
+};
+
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final Map user;
+  const LoginScreen(this.user, {super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  //
-  // USERS
-  Map users = {
-    'Abhishek': 'Abhi@123',
-    'Shashi': 'Shashi@123',
-  };
+  _LoginScreenState();
 
   // CONTROLLERS
   TextEditingController usernameController = TextEditingController();
@@ -148,8 +150,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             passwordController.text.trim();
                         bool loginValidated = _formKey.currentState!.validate();
                         if (loginValidated) {
-                          if (users.containsKey(usernameController.text)) {
-                            if (users[usernameController.text] ==
+                          if (widget.user
+                              .containsKey(usernameController.text)) {
+                            if (widget.user[usernameController.text] ==
                                 passwordController.text) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -163,10 +166,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               );
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return const ToDoScreen();
-                              }));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    usernameController.clear();
+                                    passwordController.clear();
+                                    return const ToDoScreen();
+                                  },
+                                ),
+                              );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(

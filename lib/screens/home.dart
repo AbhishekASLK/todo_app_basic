@@ -36,11 +36,6 @@ class _ToDoScreenState extends State<ToDoScreen> {
       date: '14-April-2024',
     ),
     ToDoModelClass(
-      title: 'Meeting with Mark Zuckerberg',
-      description: 'Yeah meet to the mark zuckerberg at this morning only.',
-      date: '15-May-2024',
-    ),
-    ToDoModelClass(
       title: 'Meeting with Shashi Sir',
       description: 'Yeah meet to the Shashi Sir at this morning only.',
       date: '20-June-2024',
@@ -363,14 +358,48 @@ class _ToDoScreenState extends State<ToDoScreen> {
           content: const Text('Would you like to delete this task?'),
           actions: <Widget>[
             TextButton(
-              child: const Text('Cancel'),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                height: 30,
+                width: 70,
+                child: const Center(
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
               onPressed: () {
                 setState(() {});
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text('Delete'),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      10,
+                    ),
+                  ),
+                ),
+                height: 30,
+                width: 70,
+                child: const Center(
+                  child: Text(
+                    'Delete',
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
               onPressed: () {
                 setState(() {});
                 tasks.remove(todoItem);
