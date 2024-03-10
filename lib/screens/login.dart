@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               );
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
@@ -176,6 +176,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                 ),
                               );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) {
+                              //       usernameController.clear();
+                              //       passwordController.clear();
+                              //       return const ToDoScreen();
+                              //     },
+                              //   ),
+                              // );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(

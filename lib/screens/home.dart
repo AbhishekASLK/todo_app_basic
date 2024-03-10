@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_app_basic/constants/colors.dart';
 import 'package:todo_app_basic/constants/icons.dart';
+import 'package:todo_app_basic/screens/login.dart';
 
 class ToDoModelClass {
   String title;
@@ -59,11 +61,24 @@ class _ToDoScreenState extends State<ToDoScreen> {
         ),
         backgroundColor: const Color.fromRGBO(2, 167, 177, 1),
         foregroundColor: Colors.white,
-        actions: const [
-          Icon(
-            Icons.settings,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LoginScreen(users);
+                  },
+                ),
+              );
+            },
+            child: const Icon(
+              Icons.logout_rounded,
+              size: 30,
+            ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
         ],
